@@ -15,20 +15,19 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.randomimageapp.ui.screens.HomeScreen
-import com.example.randomimageapp.viewmodel.NLUiState
 import com.example.randomimageapp.viewmodel.NLViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NLApp(){
+fun MarsApp(){
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { NLTopBar(scrollBehavior = scrollBehavior)}
+        topBar = { MarsTopBar(scrollBehavior = scrollBehavior)}
     ) {
         Surface(
             modifier = Modifier.fillMaxSize()) {
-            val nlViewModel: NLViewModel = viewModel()
+            val nlViewModel: NLViewModel = viewModel(factory = NLViewModel.Factory)
             HomeScreen(nlUiState = nlViewModel.nlUiState, contentPadding = it)
         }
 
@@ -39,8 +38,9 @@ fun NLApp(){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NLTopBar(scrollBehavior: TopAppBarScrollBehavior,modifier:Modifier = Modifier){
+fun MarsTopBar(scrollBehavior: TopAppBarScrollBehavior,modifier:Modifier = Modifier){
     CenterAlignedTopAppBar(
+        scrollBehavior=scrollBehavior,
         title = {
             Text(
                 text = stringResource(id = R.string.app_name),

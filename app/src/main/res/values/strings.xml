@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">NorthernLightsApp</string>
+    <string name="app_name">MarsPhotosApp</string>
+    <string name="NL_image">Mars photo\n</string>
 </resources>
